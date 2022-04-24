@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react'
 import styled from 'styled-components';
-import {motion} from 'framer-motion';
+import { motion} from 'framer-motion';
 // useParams() is a hook that lets you access the url parameters
 import {Link, useParams} from 'react-router-dom';
 
@@ -9,7 +9,7 @@ function Cuisine() {
     const [cuisine, setCuisine] = useState([]);
     let params = useParams();
 
-    {/* getCousine allows us to fetch relevant data from API */}
+    /* getCousine allows us to fetch relevant data from API */
     
     const getCousine = async (name) => {
         const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${name}&number=10`);
@@ -26,9 +26,10 @@ function Cuisine() {
         {cuisine.map((item) => {
             return (
                 <Card key={item.id}>
+                    <Link to={`/recipe/${item.id}`}>
                     <h4>{item.title}</h4>
                     <img src={item.image} alt={item.title} />
-            
+                    </Link>
                 </Card>
             );
         }
@@ -45,7 +46,7 @@ const Grid = styled.div`
     grid-gap: 3rem;
     `;
 
-    const Card = styled(motion.div)`
+const Card = styled(motion.div)`
     img {
     width: 100%;
     border-radius: 2rem;

@@ -11,13 +11,12 @@ function Search() {
     const submitHandler = (e) => {
         e.preventDefault();
         navigate('/searched/' + search);
-        console.log(search);
     }
     
 
 
   return (
-    <FormStyle>
+    <FormStyle onSubmit= {submitHandler} >
         <SearchBar>
             <SearchIcon>
                 <FaSearch />

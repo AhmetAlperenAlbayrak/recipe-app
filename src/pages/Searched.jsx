@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams,Link } from 'react-router-dom'
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
@@ -23,8 +23,10 @@ function Searched() {
         {searchedRecipes.map((item) => {
             return (
                 <Card key={item.id}>
+                    <Link to={`/recipe/${item.id}`}>
                     <h4>{item.title}</h4>
                     <img src={item.image} alt={item.title} />
+                    </Link>
                 </Card>
             );
         }
